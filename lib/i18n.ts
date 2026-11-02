@@ -1,0 +1,88 @@
+export type Locale = "ko" | "en" | "zh";
+
+export const LOCALES: { code: Locale; label: string }[] = [
+  { code: "ko", label: "한국어" },
+  { code: "en", label: "English" },
+  { code: "zh", label: "中文" },
+];
+
+const dict = {
+  ko: {
+    title: "절 템플스테이",
+    subtitle: "고요한 산사에서 잠시 쉬어가세요",
+    nicknamePlaceholder: "닉네임을 입력하세요",
+    enter: "입장하기",
+    nicknameRequired: "닉네임을 입력해주세요",
+    moveHint: "WASD로 이동, 마우스로 시점 회전, 클릭하여 시작",
+    zoneCourtyard: "절 마당",
+    zoneHall: "법당",
+    zoneRoom: "개인 방",
+    interactBow: "E 키를 눌러 예불하기",
+    interactRest: "E 키를 눌러 눕기",
+    interactSweep: "E 키를 눌러 마당 쓸기",
+    interactStandUp: "E 키를 눌러 일어나기",
+    bowing: "합장하고 절을 올립니다...",
+    resting: "고요히 휴식을 취합니다...",
+    sweeping: "마당을 정갈하게 쓸어봅니다...",
+    exitPointerLock: "ESC로 마우스 잠금 해제",
+    customize: "꾸미기",
+    outfit: "의복",
+    hair: "머리",
+    close: "닫기",
+    welcome: "님, 환영합니다",
+  },
+  en: {
+    title: "Temple Stay",
+    subtitle: "Rest a while in a quiet mountain temple",
+    nicknamePlaceholder: "Enter your nickname",
+    enter: "Enter",
+    nicknameRequired: "Please enter a nickname",
+    moveHint: "WASD to move, mouse to look around, click to start",
+    zoneCourtyard: "Temple Courtyard",
+    zoneHall: "Main Hall",
+    zoneRoom: "Private Room",
+    interactBow: "Press E to bow in worship",
+    interactRest: "Press E to lie down",
+    interactSweep: "Press E to sweep the courtyard",
+    interactStandUp: "Press E to stand up",
+    bowing: "Bowing in quiet prayer...",
+    resting: "Resting peacefully...",
+    sweeping: "Sweeping the courtyard...",
+    exitPointerLock: "Press ESC to release the mouse",
+    customize: "Customize",
+    outfit: "Outfit",
+    hair: "Hair",
+    close: "Close",
+    welcome: "Welcome",
+  },
+  zh: {
+    title: "寺院禅修",
+    subtitle: "在宁静的山寺中稍作休息",
+    nicknamePlaceholder: "请输入昵称",
+    enter: "进入",
+    nicknameRequired: "请输入昵称",
+    moveHint: "WASD 移动，鼠标环顾四周，点击开始",
+    zoneCourtyard: "寺院庭院",
+    zoneHall: "大雄宝殿",
+    zoneRoom: "个人房间",
+    interactBow: "按 E 参拜礼佛",
+    interactRest: "按 E 躺下休息",
+    interactSweep: "按 E 打扫庭院",
+    interactStandUp: "按 E 起身",
+    bowing: "正在虔诚礼拜...",
+    resting: "正在安静休息...",
+    sweeping: "正在打扫庭院...",
+    exitPointerLock: "按 ESC 解除鼠标锁定",
+    customize: "装扮",
+    outfit: "服装",
+    hair: "发型",
+    close: "关闭",
+    welcome: "欢迎",
+  },
+} satisfies Record<Locale, Record<string, string>>;
+
+export type TranslationKey = keyof typeof dict.ko;
+
+export function t(locale: Locale, key: TranslationKey): string {
+  return dict[locale][key] ?? dict.ko[key];
+}
